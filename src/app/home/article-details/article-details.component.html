@@ -1,0 +1,41 @@
+<div>
+  <img src="src\assets\ngblog.png" style="width: 100%;">
+</div>
+<br>
+<div class="card-header" style="color:crimson"><img 
+  [src]='article?.author?.image'
+  [title]='post?.author?.username'
+  [style.width.px]='imageWidth'
+  [style.margin.px]='imageMargin'><b>{{article?.author?.username}}</b>
+</div>
+<div class="card-body"> 
+  <h6>{{article?.title}}</h6>
+  <p style="float:right"><button class="btn btn-outline-success btn-sm" (click)="onClickFavourite($event)"><i class="fas fa-heart"> &nbsp;{{article?.favoritesCount}}</i></button></p>
+  <p>{{article?.body}}</p>
+  <br>
+  <br>
+  <span><h4>War Zone</h4></span>
+  <div *ngFor='let comment of comments'>
+      <div class='card'>
+        <div class='card-header'>
+        <span style="color:crimson"><img 
+          [src]='comment?.author?.image'
+          [title]='comment?.author?.username'
+          [style.width.px]='imageWidth'
+          [style.margin.px]='imageMargin'>{{comment?.author?.username}}</span>
+        </div>
+        <div class='card-body'>
+        <span>{{comment.body}}</span>
+        <button (click)="deleteComment(comment.id,comment.author.username)" style="float:right;" class="btn btn-danger">Withdraw</button>
+        </div>
+      </div>
+      </div>
+      <div *ngIf='(isLoggedIn | async)' class='form-group'>
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+          <textarea type="text" rows="4" class="form-control" formControlName="comment" placeholder="To enter the war zone"></textarea>
+          <button [disabled]="loading" class="btn btn-danger" style="float: right;">Bring it on</button>
+        </form>
+      </div>
+</div>
+
+

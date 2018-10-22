@@ -1,0 +1,29 @@
+<div class='card'>
+    <div>
+        <img src="src\assets\ngblog.png" style="width: 100%;">
+      </div>
+      <br>      
+  <div class='card-header'>
+    <h4>Articles</h4>  
+  </div>
+  <div class='card-body'>
+<div class="justify" *ngFor='let article of articles | slice:0:1'>
+<div *ngFor='let post of article'>
+  <div class="card-header" style="color:crimson"><img 
+    [src]='post?.author?.image'
+    [title]='post?.author?.username'
+    [style.width.px]='imageWidth'
+    [style.margin.px]='imageMargin'><b>{{post?.author?.username}}</b>
+  </div>
+  <br>
+  <div class="card-body"> 
+    <h6><a routerLink='/article/{{post.slug}}'  [queryParams]="{slug:post.slug}" routerlinkActive="active" style="color: #000;">&nbsp;{{post?.title}}&nbsp;&nbsp;</a></h6>
+    <p style="float:right"><button class="btn btn-outline-success btn-sm" (click)="onClickFavourite($event)"><i class="fas fa-heart"> &nbsp;{{post?.favoritesCount}}</i></button></p>
+    <p>{{post?.body}}</p>
+    <br>
+    <br>
+  </div>
+</div>
+</div>
+</div>
+</div>
