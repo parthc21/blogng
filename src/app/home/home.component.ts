@@ -6,6 +6,7 @@ import {ArserviceService} from 'src/app/arservice.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
   pageTitle:'Articles';
   imageWidth: number=30;
   imageMargin:number=2;

@@ -21,7 +21,8 @@ const appRoutes: Routes = [
   {path:'signuppage',component:SignupPageComponent},
   {path:'homepage',component:HomeComponent},
   {path:'article/:',component:ArticleDetailsComponent},
-  {path:'postarticle',component:NewarticleComponent}
+  {path:'postarticle',component:NewarticleComponent},
+  {path:'',redirectTo:"/homepage",pathMatch:"full"}
 ];
 @NgModule({
   declarations: [
