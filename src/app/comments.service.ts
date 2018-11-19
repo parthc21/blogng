@@ -16,9 +16,7 @@ export class CommentsService {
     return this.http.post<any>(`${this.url}/articles/${slug}/comments`,
     {"comment":{body:comment}},{
       headers:headers
-    }).pipe(map(article=>{
-      return article.article;
-    }));
+    });
   }
   deleteComment(slug:string,id:number){
     const headers=new HttpHeaders({"Content-Type":"application/json","Authorization":"Token "+localStorage.jwtToken});
